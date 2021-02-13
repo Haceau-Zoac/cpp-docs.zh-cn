@@ -1,5 +1,5 @@
 ---
-description: '了解详细信息： `auto` (c + +) '
+description: '了解详细信息： `auto` (C++) '
 title: auto (C++)
 ms.date: 12/10/2019
 f1_keywords:
@@ -20,35 +20,35 @@ ms.locfileid: "98104747"
 从其初始化表达式中推导声明的变量的类型。
 
 > [!NOTE]
-> C + + 标准定义此关键字的原始和修订的含义。 在 Visual Studio 2010 之前， **`auto`** 关键字在 *自动* 存储类中声明变量，即具有本地生存期的变量。 从 Visual Studio 2010 开始， **`auto`** 关键字声明一个变量，该变量的类型是从其声明中的初始化表达式推导出来的。 [ `/Zc:auto`&#91; &#93;](../build/reference/zc-auto-deduce-variable-type.md)编译器选项控制关键字的含义 **`auto`** 。
+> C++ 标准定义此关键字的原始和修订的含义。在 Visual Studio 2010 之前， **`auto`** 关键字在*自动*存储类中声明变量，即具有本地生存期的变量。从 Visual Studio 2010 开始， **`auto`** 关键字声明一个变量，该变量的类型是从其声明中的初始化表达式推导出来的。[ `/Zc:auto`&#91;-&#93;](../build/reference/zc-auto-deduce-variable-type.md) 编译器选项控制 **`auto`** 关键字的含义。
 
 ## <a name="syntax"></a>语法
 
-> **`auto`***声明符**初始值设定项***`;`**
+> **`auto` ***声明符** 初始值设定项*** **`;`**
 
-> **`[](auto`***param1* **`, auto`***param2***`) {};`**
+> **`[](auto`** *param1* **`, auto`** *param2* **`) {};`**
 
 ## <a name="remarks"></a>备注
 
 **`auto`** 关键字指示编译器使用已声明变量的初始化表达式，或使用 lambda 表达式参数来推导其类型。
 
-建议你在 **`auto`** 大多数情况下使用关键字，除非你确实需要转换，因为它具有以下优势：
+建议你在大多数情况下使用 **`auto`** 关键字，除非你确实需要转换，因为它具有以下优势：
 
 - **可靠性：** 如果表达式的类型发生更改（这包括在函数返回类型发生更改时），则它将正常工作。
 
 - **性能：** 您可以保证不会进行任何转换。
 
-- **可用性：** 无需担心类型名称拼写错误和拼写错误。
+- **可用性：** 无需担心难以拼写的类型名称和拼写错误。
 
-- **效率：** 你的编码可能更高效。
+- **效率：** 可能会让你的编码更高效。
 
-可能不想使用的转换情况 **`auto`** ：
+可能不想使用 **`auto`** 的转换情况：
 
 - 当需要特定类型且不需要执行任何其他操作时。
 
 - 表达式模板帮助程序类型，例如 `(valarray+valarray)` 。
 
-若要使用 **`auto`** 关键字，请使用它（而不是类型）来声明变量，并指定初始化表达式。 此外，还可以 **`auto`** 使用说明符和声明符（如 **`const`** 、 **`volatile`** 、指针 (**`*`**) 、引用 (**`&`**) 和右值引用 (**`&&`**) 来修改关键字。 编译器计算初始化表达式，然后使用该信息来推断变量类型。
+若要使用 **`auto`** 关键字，请使用它（而不是类型）来声明变量，并指定初始化表达式。 此外，还可以使用说明符和声明符（如 **`const`** 、 **`volatile`** 、指针 (**`*`**) 、引用 (**`&`**) 和右值引用 (**`&&`**) 来修改 **`auto`** 关键字。 编译器计算初始化表达式，然后使用该信息来推断变量类型。
 
 **`auto`** 初始化表达式可以采用多种形式：
 
@@ -59,23 +59,23 @@ ms.locfileid: "98104747"
 
 有关详细信息，请参阅本文档后面的 [初始值设定项](../cpp/initializers.md) 和代码示例。
 
-当 **`auto`** 用于在基于范围的语句中声明循环参数时 **`for`** ，它将使用不同的初始化语法，例如 `for (auto& i : iterable) do_action(i);` 。 有关详细信息，请参阅 [基于范围的 `for` 语句 (c + +) ](../cpp/range-based-for-statement-cpp.md)。
+当 **`auto`** 用于在基于范围的 **`for`** 语句中声明循环参数时，它将使用不同的初始化语法，例如 `for (auto& i : iterable) do_action(i);`。有关详细信息，请参阅 [基于范围的 `for` 语句 (C++) ](../cpp/range-based-for-statement-cpp.md)。
 
-**`auto`** 关键字是类型的占位符，但它本身不是类型。 因此， **`auto`** 关键字不能用于 [`sizeof`](../cpp/sizeof-operator.md) c + +/cli) 的强制转换或运算符（例如和） ([`typeid`](../extensions/typeid-cpp-component-extensions.md) 。
+**`auto`** 关键字是类型的占位符，但它本身不是类型。因此， **`auto`** 关键字不能用于强制转换或运算符，例如 [`sizeof`](../cpp/sizeof-operator.md) (C++/CLI) 和 ([`typeid`](../extensions/typeid-cpp-component-extensions.md)。
 
 ## <a name="usefulness"></a>有用性
 
-**`auto`** 关键字是声明具有复杂类型的变量的一种简单方法。 例如，可以使用 **`auto`** 声明一个变量，其中的初始化表达式包含模板、指向函数的指针或指向成员的指针。
+**`auto`** 关键字是声明具有复杂类型的变量的一种简单方法。例如，可以使用 **`auto`** 声明一个变量，其中的初始化表达式包含模板、指向函数的指针或指向成员的指针。
 
-还可以使用 **`auto`** 将变量声明并初始化为 lambda 表达式。 您不能自行声明变量的类型，因为仅编译器知道 lambda 表达式的类型。 有关详细信息，请参阅 [Lambda 表达式的示例](../cpp/examples-of-lambda-expressions.md)。
+还可以使用 **`auto`** 将变量声明并初始化为 lambda 表达式。您不能自行声明变量的类型，因为仅编译器知道 lambda 表达式的类型。有关详细信息，请参阅 [Lambda 表达式的示例](../cpp/examples-of-lambda-expressions.md)。
 
 ## <a name="trailing-return-types"></a>尾部的返回类型
 
-可以结合使用 **`auto`** 和 **`decltype`** 类型说明符来帮助编写模板库。 使用 **`auto`** 和 **`decltype`** 来声明其返回类型依赖于其模板参数类型的模板函数。 或者，使用 **`auto`** 和 **`decltype`** 来声明一个模板函数，该函数包装对其他函数的调用，然后返回该函数的返回类型的任何内容。 有关详细信息，请参阅 [`decltype`](../cpp/decltype-cpp.md)。
+可以结合使用 **`auto`** 和 **`decltype`** 类型说明符来帮助编写模板库。 使用 **`auto`** 和 **`decltype`** 来声明其返回类型依赖于其模板参数类型的模板函数。 或者，使用 **`auto`** 和 **`decltype`** 来声明一个模板函数，该函数包装对其他函数的调用，然后返回该函数的返回类型的任何内容。有关详细信息，请参阅 [`decltype`](../cpp/decltype-cpp.md)。
 
 ## <a name="references-and-cv-qualifiers"></a>引用和 cv 限定符
 
-请注意，使用 **`auto`** "删除引用"、" **`const`** 限定符" 和 " **`volatile`** 限定符"。 请看下面的示例：
+请注意，使用 **`auto`** 删除引用、 **`const`** 限定符 和 **`volatile`** 限定符。请看下面的示例：
 
 ```cpp
 // cl.exe /analyze /EHsc /W4
@@ -97,9 +97,9 @@ int main( )
 }
 ```
 
-在上面的示例中，myAuto 是一个 **`int`** ，而不是一个 **`int`** 引用，因此输出是 `11 11` ， `11 12` 如果引用限定符未被删除，则不会出现这种情况 **`auto`** 。
+在上面的示例中，myAuto 是一个 **`int`** ，而不是一个 **`int`** 引用，因此输出是 `11 11` ，如果引用限定符未被 **`auto`** 删除，则不会出现这种情况。
 
-## <a name="type-deduction-with-braced-initializers-c14"></a>用大括号内初始值设定项进行类型推导 (c + + 14) 
+## <a name="type-deduction-with-braced-initializers-c14"></a>用大括号内初始值设定项进行类型推导 (C++14) 
 
 下面的代码示例演示如何 **`auto`** 使用大括号初始化变量。 请注意 B 和 C 之间的差异以及 A 和 E 之间的差异。
 
@@ -146,23 +146,23 @@ int main()
 
 ## <a name="examples"></a>示例
 
-这些代码片段演示了可使用关键字的一些方式 **`auto`** 。
+这些代码片段演示了可使用 **`auto`** 关键字的一些方式。
 
-下面的声明等效。 在第一个语句中，变量 `j` 声明为类型 **`int`** 。 在第二个语句中，变量 `k` 将被推断为类型， **`int`** 因为初始化表达式 (0) 是整数。
+下面的声明等效。在第一个语句中，变量 `j` 声明为类型 **`int`** 。在第二个语句中，变量 `k` 将被推断为 **`int`** 类型，因为初始化表达式 (0) 是整数。
 
 ```cpp
 int j = 0;  // Variable j is explicitly type int.
 auto k = 0; // Variable k is implicitly type int because 0 is an integer.
 ```
 
-以下声明等效，但第二个声明比第一个更简单。 使用关键字的最有说服力的原因之一 **`auto`** 是简单的。
+以下声明等效，但第二个声明比第一个更简单。使用关键字的最有说服力的原因之一： **`auto`** 是简单的。
 
 ```cpp
 map<int,list<string>>::iterator i = m.begin();
 auto i = m.begin();
 ```
 
-`iter` `elem` 当 **`for`** 和范围 **`for`** 循环开始时，以下代码段将声明变量的类型。
+当 **`for`** 和范围 **`for`** 循环开始时，以下代码段将声明 `iter` 和 `elem` 变量的类型。
 
 ```cpp
 // cl /EHsc /nologo /W4
@@ -213,7 +213,7 @@ int v1 = 100, v2 = 200;
 auto x = v1 > v2 ? v1 : v2;
 ```
 
-下面的代码片段将变量初始化 `x` 为类型，将变量引用为对类型的 **`int`** 引用，并将变量初始化为指向 `y` **`const int`** `fp` 返回类型的函数的指针 **`int`** 。
+下面的代码片段将变量 `x` 初始化为类型 **`int`** ，将 `y` 变量初始化为类型 **`const int`** 的引用，并将 `fp` 变量初始化为指向返回值类型为 **`int`** 的函数的指针。
 
 ```cpp
 int f(int x) { return x; }
